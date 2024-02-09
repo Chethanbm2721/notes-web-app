@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="sidebar">
+    <div class="app-name">Notes</div>
+    <div (click)="showColorList()" class="add-button">
+      <ng-template
+        [ngIf]="isShowColorList"
+        [ngIfThen]="thenBlock1"
+        [ngIfElse]="elseBlock2"
+      >
+      </ng-template>
+    </div>
+    <ng-template #thenBlock1> × </ng-template>
+    <ng-template #elseBlock2> + </ng-template>
+    <div *ngIf="isShowColorList" class="color-container">
+      <div
+        class="color-item"
+        style="background-color: #fdff7d"
+        (click)="openPopupBox('#fdff7d')"
+      ></div>
+      <div
+        class="color-item"
+        style="background-color: #ffea75"
+        (click)="openPopupBox('#ffea75')"
+      ></div>
+      <div
+        class="color-item"
+        style="background-color: #e5c8ff"
+        (click)="openPopupBox('#e5c8ff')"
+      ></div>
+      <div
+        class="color-item"
+        style="background-color: #bef2ff"
+        (click)="openPopupBox('#bef2ff')"
+      ></div>
+      <div
+        class="color-item"
+        style="background-color: #c9ffb4"
+        (click)="openPopupBox('#c9ffb4')"
+      ></div>
+    </div>
+  </div>
+  <div class="mainbar">
+    <div class="search-box">
+      <div class="search-icon">
+        <img
+          src="../../assets/icon-images/search-icon.png"
+          height="20px"
+          width="20px"
+        />
+      </div>
+      <div class="input-tag">
+        <input type="text" placeholder="Search" />
+      </div>
+    </div>
+    <div class="title">Notes</div>
+    <div class="notes-container">
+      <div
+        *ngFor="let note of notes; let i = index"
+        class="notes"
+        [ngStyle]="{
+          'background-color': note.color,
+          'box-shadow': '0 0 20px 10px ' + note.color + '3f'
+        }"
+      >
+        <div class="notes-header">
+          <div class="notes-title">{{ note.title }}</div>
+          <div class="favourite-button" (click)="addToFavourite(i)">
+            <ng-template
+              [ngIf]="note.isFavourite"
+              [ngIfThen]="thenBlock1"
+              [ngIfElse]="elseBlock2"
+            >
+            </ng-template>
+          </div>
+          <ng-template #thenBlock1>
+            <img
+              src="../../assets/icon-images/favourite-icon-after.png"
+              height="10px"
+              width="10px"
+            />
+          </ng-template>
+          <ng-template #elseBlock2>
+            <img
+              src="../../assets/icon-images/favourite-icon-before.png"
+              height="10px"
+              width="10px"
+            />
+          </ng-template>
+        </div>
+        <div class="notes-content">
+          {{ note.description }}
+        </div>
+        <div class="notes-footer">
+          <div class="created-date">
+            {{ note.date | date : "MMM dd, yyyy" }}
+          </div>
+          <div class="modify-box">
+            <div
+              class="edit-button"
+              (click)="openPopupBox(note.color, note.id)"
+            >
+              <img
+                src="../../assets/icon-images/edit-icon.png"
+                height="15px"
+                width="15px"
+              />
+            </div>
+            <div class="edit-button" (click)="deleteNote(note.id)">
+              <img
+                src="../../assets/icon-images/delete-icon.png"
+                height="15px"
+                width="15px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="popup-overlay" *ngIf="openPopUp">
+  <div class="popup-container" [ngStyle]="{ 'background-color': noteColor }">
+    <div style="justify-content: center; display: flex">New Note</div>
+    <div style="width: 100%">
+      <form [formGroup]="noteForm" (ngSubmit)="updateNote()">
+        <div class="form-container">
+          <div>
+            <input type="text" placeholder="Title" formControlName="title" />
+          </div>
+          <div>
+            <textarea
+              placeholder="Description...."
+              rows="8"
+              formControlName="description"
+            >
+            </textarea>
+          </div>
+
+          <div class="popup-footer">
+            <button type="submit">Save</button>
+
+            <button (click)="closePopupBox()" type="button">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

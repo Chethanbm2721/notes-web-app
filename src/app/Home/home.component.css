@@ -1,0 +1,368 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.sidebar {
+    display: flex;
+    width: 10%;
+    height: 100%;
+  position: fixed;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    border-right:  1px solid #ddd;   
+
+}
+
+.app-name {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+button {
+
+    
+    /* Reset line height */
+    background: none;
+    color: white;
+   
+    border: none;
+    /* Remove border */
+   display: block;
+   width: 40%;
+   height: 40px;
+   column-gap: 20px;
+   background-color: black;
+   border-radius: 8px;
+   box-shadow: 0px 16px 48px 0px rgba(0, 0, 0, 0.176);
+}
+
+.add-button {
+    margin-top: 40px;
+    padding: 12px 18px;
+    border: none;
+    color: white;
+    background-color: black;
+
+    
+    border-radius: 50%;
+
+}
+
+
+.color-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding-top: 20px;
+   
+}
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.color-item {
+
+
+    background-color: red;
+    border-radius: 50%;
+    padding: 8px;
+    border-radius: 50%;
+    animation: fadeIn 0.5s ease-out forwards;
+    transform: translateY(-20px) scaleY(0);
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px) scaleY(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+  }
+  .color-item:nth-child(1) {
+    animation-delay: 0.2s; /* Adjust the delay for the first item */
+  }
+  
+  .color-item:nth-child(2) {
+    animation-delay: 0.4s; /* Adjust the delay for the second item */
+  }
+  
+  .color-item:nth-child(3) {
+    animation-delay: 0.6s; /* Adjust the delay for the third item */
+  }
+  
+  .color-item:nth-child(4) {
+    animation-delay: 0.8s; /* Adjust the delay for the fourth item */
+  }
+  
+  .color-item:nth-child(5) {
+    animation-delay: 1s; /* Adjust the delay for the fifth item */
+  }
+  
+.mainbar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+  padding: 20px 40px;
+  padding-right: 20px;
+    background-color: #ffffff;
+    width: 90%;
+    height: 100%;
+    margin-left: 10%;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    border-radius: 5px;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: block;
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+input::placeholder,textarea::placeholder {
+  color: #000000; /* Replace with the desired color */
+}
+
+
+input:focus,
+input:active,
+input:not(:placeholder-shown) {
+    border-color: #3498db;
+    /* Change border color on focus, when active, or when there's input */
+}
+
+.input-tag {
+    width: 100%;
+
+    border: none;
+}
+
+.search-icon {
+    margin-top: 12px;
+    margin-left: 10px;
+
+}
+
+.title{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.notes-container{
+  
+    width: 100%;
+    height: 100%;
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.notes{
+    display: flex;
+    flex-direction: column;
+
+
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 8px;
+    background-color: #fff;
+    
+    
+    flex-grow: 1;
+    height:350px;
+}
+.notes-header{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.notes-title{
+   
+    
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.favourite-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    padding: 10px 10px;
+    border: none;
+    color: white;
+    background-color: black;
+    
+    border-radius: 50%;
+    transition: background-color 0.2s ease; /* Add a smooth transition for color change */
+
+    cursor: pointer;
+
+}
+
+
+.favourite-button:active {
+  background-color: #ffffff; 
+}
+
+
+
+
+
+
+.notes-content{
+    padding: 10px;
+    font-size: 1em;
+    font-weight: 500;
+    flex-grow: 1;
+    overflow-y: auto; /* Enable vertical scrolling for the description area */
+    max-height: 100%;
+    text-align: justify;
+    overflow-wrap: break-word;
+
+}
+
+.notes-footer{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+ 
+  
+}
+
+.modify-box{
+  display: flex;
+  flex-direction: row;
+column-gap: 10px;
+}
+
+.edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    padding: 10px 10px;
+    border: none;
+    color: white;
+    background-color: black;
+
+
+    border-radius: 50%;
+
+}
+
+.created-date{
+    font-size: 1em;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.776);
+    flex-grow: 0.5;
+}
+
+
+
+
+
+/* Popup Box CSS */
+.popup-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background-color:  rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container{
+  background-color:#ffe089 ;
+  width: 30%;
+  height: 70%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  
+  row-gap: 20px;
+  
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  
+}
+
+.popup-footer{
+  display: flex;
+  flex-direction: row;
+width:100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+textarea{
+  background-color: inherit;
+    width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: block;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555; /* Set the color of the thumb (the draggable part) */
+  border-radius: 8px; /* Set the border radius for a rounded thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eee; /* Set the color of the track (the non-draggable part) */
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333; /* Set the color on hover */
+}
